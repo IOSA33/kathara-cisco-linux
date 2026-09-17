@@ -1,0 +1,9 @@
+ip addr add 135.46.56.1/21 dev eth0
+ip addr add 192.168.0.22/30 dev eth1
+ip addr add 192.168.0.18/30 dev eth2
+
+ip link set eth0 up
+ip link set eth1 up
+ip link set eth2 up
+
+sysctl -w net.ipv4.ip_forward=1

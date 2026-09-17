@@ -1,0 +1,32 @@
+enable
+configure terminal
+
+hostname Reititin4
+
+interface GigabitEthernet0/0
+ ip address 192.168.0.6 255.255.255.252
+ no shutdown
+ exit
+
+interface GigabitEthernet0/1
+ ip address 192.168.0.25 255.255.255.252
+ no shutdown
+ exit
+
+interface GigabitEthernet0/2
+ ip address 192.168.0.21 255.255.255.252
+ no shutdown
+ exit
+
+interface GigabitEthernet0/3
+ ip address 192.168.0.13 255.255.255.252
+ no shutdown
+ exit
+
+ip route 135.46.56.0 255.255.252.0 192.168.0.14
+ip route 135.46.56.0 255.255.248.0 192.168.0.22
+ip route 192.53.40.0 255.255.254.0 192.168.0.26
+ip route 0.0.0.0 0.0.0.0 192.168.0.5
+
+end
+write memory
