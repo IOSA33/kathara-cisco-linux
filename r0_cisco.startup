@@ -6,6 +6,8 @@ ip link set eth0 up
 ip link set eth1 up
 ip link set eth2 up
 
+ip route add default via 192.168.0.1 dev eth1
+
 mkdir -p /var/log/quagga
 touch /var/log/quagga/ripd.log
 chown -R quagga:quagga /var/log/quagga
