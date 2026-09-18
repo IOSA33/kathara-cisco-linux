@@ -1,27 +1,15 @@
-enable
-configure terminal
+ip addr add 192.168.0.10/30 dev eth0
+ip addr add 192.168.0.2/30 dev eth1
+ip addr add 192.168.0.5/30 dev eth2
 
-hostname Reititin0
+ip link set eth0 up
+ip link set eth1 up
+ip link set eth2 up
 
-interface GigabitEthernet0/0
- ip address 192.168.0.10 255.255.255.252
- no shutdown
- exit
+mkdir -p /var/log/quagga
+touch /var/log/quagga/ripd.log
+chown -R quagga:quagga /var/log/quagga
+chmod 750 /var/log/quagga
+chmod 640 /var/log/quagga/ripd.log
 
-interface GigabitEthernet0/1
- ip address 192.168.0.2 255.255.255.252
- no shutdown
- exit
-
-interface GigabitEthernet0/2
- ip address 192.168.0.5 255.255.255.252
- no shutdown
- exit
-
-router rip
- version 2
- no auto-summary
- network 192.168.0.0
-
-end
-write memory
+/etc/init.d/quagga start

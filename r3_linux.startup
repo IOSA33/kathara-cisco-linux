@@ -4,4 +4,10 @@ ip addr add 192.53.40.1/23 dev eth1
 ip link set eth0 up
 ip link set eth1 up
 
-sysctl -w net.ipv4.ip_forward=1
+mkdir -p /var/log/quagga
+touch /var/log/quagga/ripd.log
+chown -R quagga:quagga /var/log/quagga
+chmod 750 /var/log/quagga
+chmod 640 /var/log/quagga/ripd.log
+
+/etc/init.d/quagga start

@@ -1,12 +1,5 @@
-enable
-configure terminal
+ip addr add 192.168.0.1/30 dev eth0
 
-hostname ReunaReititin
+ip link set eth0 up
 
-interface GigabitEthernet0/0
- ip address 192.168.0.1 255.255.255.252
- no shutdown
- exit
-
-end
-write memory
+sysctl -w net.ipv4.ip_forward=1
